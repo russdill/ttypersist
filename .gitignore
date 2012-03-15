@@ -1,0 +1,14 @@
+.deps/
+.libs/
+config/
+autom4te.cache/
+*.o
+*.la
+*.lo
+aclocal.m4
+config.log
+config.status
+configure
+Makefile
+Makefile.in
+libtool

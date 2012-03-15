@@ -1,0 +1,21 @@
+---------------- ttypersist --------------------
+
+:Usage:
+
+LD_PRELOAD=ttypersist.so TTYS=/dev/ttyUSB0:/dev/ttyUSB1 <program>
+
+:Background:
+
+TTY Persist provides an application a fake socket whenever it opens a tty in the
+TTYS list. In a separate thread, the tty is opened and data is passed to the
+fake socket so long as the tty is available. If the tty is not available, writes
+to the fake socket will be dropped, and the socket will not return data on
+reads.
+
+TTY Persist will also save the termios struct across connect/disconnect events
+and reapply it on reconnect. IOCTLs on the fake socket will forward to the real
+device if connected. If the device is disconnected, termios data will be saved
+in the case of writes to the termios struct, and saved termios data will be
+returned in the case of reads.
+
+TTY Persist attempts to re-open the device every 250ms if it is not available.

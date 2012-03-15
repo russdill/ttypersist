@@ -1,0 +1,16 @@
+* Additional environmental variables
+
+It would be useful to implement options to modify some of the fixed behavior
+such as sleep time between re-open attempts.
+
+* Symbolic tty referencing
+
+It might be useful to locate a tty by some symbolic rule, such as:
+
+- Any USB serial adaptor
+- An adaptor with a specific model and or serial number
+
+* udev integration
+
+Rather than spinning on the device, it might be better to listen for udev
+events. This might fit in well with the symbol tty referencing above.
